@@ -7,13 +7,15 @@ rule minimap:
         BigJobCpu
     resources:
         mem_mb=BigJobMem
+    params:
+        os.path.join(DBDIR,"Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa")
     log:
         os.path.join(LOGS,"{sample}.minimap.log")
     conda:
         os.path.join('..', 'envs','align.yaml')
     shell:
         '''
-        minimap2 -ax splice Rattus_norvegicus.Rnor_6.0.dna.toplevel.fa {input[0]} > {output[0]}
+        minimap2 -ax splice {params[0]} {input[0]} > {output[0]}
         '''
 
 rule convert_sam_bam:
@@ -33,7 +35,6 @@ rule convert_sam_bam:
         '''
         samtools view -S -b {input[0]} > {output[0]}
         '''
-
 
 #### aggregation rule
 rule align_aggr:

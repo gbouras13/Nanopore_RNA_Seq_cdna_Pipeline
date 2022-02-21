@@ -67,16 +67,16 @@ rule unzip:
     """gunzip files."""
     input:
         os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz')
-        #os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.105.gtf.gz')
+        os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.105.gtf.gz')
     output:
         os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa'),
-        #os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.105.gtf'),
+        os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.105.gtf'),
         os.path.join(Reference_Dir, 'unzip.dlflag')
     threads:
         1
     shell:
         """
         gunzip {input[0]}
-        #gunzip {input[1]}
+        gunzip {input[1]}
         touch {output[2]}
         """

@@ -1,10 +1,14 @@
 """
 The snakefile that runs the pipeline.
+
+# local tests
+snakemake -s rna_seq_runner.smk -c 16 --use-conda --config Reads=Fastqs Output='/Users/a1667917/Documents/Ghais/Rat_RNA_Seq/test' DBDIR='/Users/a1667917/Documents/Ghais/Rat_RNA_Seq/Rat_Transcriptome'  --conda-frontend conda
+
 # HPC
 # on login node from pipeline dir
 snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=Fastqs Output=test --conda-create-envs-only --conda-frontend conda
 # to run
-snakemake -s rna_seq_runner.smk --use-conda --config Reads=Fastqs/ Output=RNA_EGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
+snakemake -s rna_seq_runner.smk --use-conda --config Reads=Fastqs/ Output=test DBDIR='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
 """
 
 
@@ -35,21 +39,11 @@ writeSamplesTsv(sampleReads, os.path.join(OUTPUT, 'rna_seq_samples.tsv'))
 include: "rules/targets.smk"
 include: "rules/qc.smk"
 include: "rules/align.smk"
-
+include: "rules/quantify.smk"
 
 rule all:
     input:
         QCFiles,
-        AlignFiles
-        # ## Assembly
-        # AssemblyFiles,
-        # ## Translated (nt-to-aa) search
-        # SecondarySearchFilesAA,
-        # ## Untranslated (nt-to-nt) search
-        # SecondarySearchFilesNT,
-        # ## Contig annotation
-        # ContigAnnotFiles,
-        # ## Mapping (read-based contig id)
-        # MappingFiles,
-        # ## Summary
-        # SummaryFiles
+        AlignFiles,
+        BambuFiles
+        

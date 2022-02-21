@@ -2,8 +2,11 @@
 Database and output locations for the pipeline
 """
 
-
-DBDIR = 'Databases'
+### OUTPUT DIRECTORY
+if config['DBDIR'] is None:
+  DBDIR = '/hpcfs/users/a1667917/Reference_Rat_Transcriptome/'
+else:
+  DBDIR = config['DBDIR']
 
 ### OUTPUT DIRECTORY
 if config['Output'] is None:
@@ -21,6 +24,7 @@ QC = os.path.join(OUTPUT, 'QC')
 FLAGS = os.path.join(OUTPUT, 'FLAGS')
 WORKDIR = os.path.join(OUTPUT, 'PROCESSING')
 TMP = os.path.join(WORKDIR, 'TMP')
+R_OBJECTS = os.path.join(WORKDIR, 'R_OBJECTS')
 LOGS = os.path.join(OUTPUT, 'LOGS')
 
 
