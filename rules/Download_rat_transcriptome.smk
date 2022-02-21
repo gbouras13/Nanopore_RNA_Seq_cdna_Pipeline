@@ -63,7 +63,7 @@ rule download_gtf:
         touch {output[0]}
         """
 
-rule unzip_salmon:
+rule unzip:
     """gunzip files."""
     input:
         os.path.join(Reference_Dir, 'Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz').
