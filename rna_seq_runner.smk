@@ -2,7 +2,7 @@
 The snakefile that runs the pipeline.
 # HPC
 # on login node from pipeline dir
-snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=Fastqs Output=test hg38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --conda-create-envs-only --conda-frontend conda
+snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=Fastqs Output=test --conda-create-envs-only --conda-frontend conda
 # to run
 snakemake -s rna_seq_runner.smk --use-conda --config Reads=Fastqs/ Output=RNA_EGA_Out HG38_dir='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
 """
@@ -34,11 +34,13 @@ writeSamplesTsv(sampleReads, os.path.join(OUTPUT, 'rna_seq_samples.tsv'))
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/qc.smk"
+include: "rules/align.smk"
 
 
 rule all:
     input:
-        QCFiles
+        QCFiles,
+        AlignFiles
         # ## Assembly
         # AssemblyFiles,
         # ## Translated (nt-to-aa) search

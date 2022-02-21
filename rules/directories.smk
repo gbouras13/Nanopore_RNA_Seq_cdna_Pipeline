@@ -11,6 +11,9 @@ if config['Output'] is None:
 else:
   OUTPUT = config['Output']
 
+# needs to be created before fastqc is run
+if not os.path.exists(OUTPUT):
+  os.makedirs(OUTPUT)
 
 ### OUTPUT DIRs
 RESULTS = os.path.join(OUTPUT, 'RESULTS')
