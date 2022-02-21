@@ -1,6 +1,6 @@
 """
 Snakefile for downloading files for the rattus norvegicus 
-snakemake -c 1 -s rules/Download_rat transcriptome.smk --config Reference_Dir='/hpcfs/users/a1667917/Reference_Rat_Transcriptome'
+snakemake -c 1 -s rules/Download_rat_transcriptome.smk --config Reference_Dir='/hpcfs/users/a1667917/Reference_Rat_Transcriptome/'
 """
 import os
 
@@ -8,7 +8,7 @@ import os
 configfile: os.path.join(workflow.basedir, '..', 'config', 'config.yaml')
 
 if config['Reference_Dir'] is None:
-    Reference_Dir = "/hpcfs/users/a1667917/Reference_Rat_Transcriptome"
+    Reference_Dir = "/hpcfs/users/a1667917/Reference_Rat_Transcriptome/"
 else:
     Reference_Dir = config["Reference_Dir"]
 
