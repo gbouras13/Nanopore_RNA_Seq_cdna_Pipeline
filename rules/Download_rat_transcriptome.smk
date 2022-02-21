@@ -31,7 +31,7 @@ rule download_fasta:
         1
     shell:
         """
-        wget -c "http://ftp.ensembl.org/pub/release-105/fasta/rattus_norvegicus/dna/Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz" -O Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz
+        wget -c "ftp://ftp.ensembl.org/pub/release-105/fasta/rattus_norvegicus/dna/Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz" -O Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz
         mv "Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa.gz" {output[1]}
         touch {output[0]}
         """
@@ -58,7 +58,7 @@ rule download_gtf:
         1
     shell:
         """
-        wget -c "http://ftp.ensembl.org/pub/release-105/gtf/rattus_norvegicus/Rattus_norvegicus.mRatBN7.2.105.gtf.gz" -O Rattus_norvegicus.mRatBN7.2.105.gtf.gz
+        wget -c "ftp://ftp.ensembl.org/pub/release-105/gtf/rattus_norvegicus/Rattus_norvegicus.mRatBN7.2.105.gtf.gz" -O Rattus_norvegicus.mRatBN7.2.105.gtf.gz
         mv "Rattus_norvegicus.mRatBN7.2.105.gtf.gz" {output[1]}
         touch {output[0]}
         """
