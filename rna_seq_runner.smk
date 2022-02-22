@@ -6,7 +6,7 @@ snakemake -s rna_seq_runner.smk -c 16 --use-conda --config Reads=fastqs Output='
 
 # HPC
 # on login node from pipeline dir
-snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=Fastqs Output=test --conda-create-envs-only --conda-frontend conda
+snakemake -s rna_seq_runner.smk -c 1 --use-conda --config Reads=fastqs Output=test --conda-create-envs-only --conda-frontend conda
 # to run
 snakemake -s rna_seq_runner.smk --use-conda --config Reads=Fastqs/ Output=test DBDIR='/hpcfs/users/a1667917/STAR_Ref_Genomes' --profile wgs_tcga
 """

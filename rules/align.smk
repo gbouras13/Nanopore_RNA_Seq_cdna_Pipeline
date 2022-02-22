@@ -18,7 +18,6 @@
 #         #minimap2 -ax splice -k9 {params[0]} {input[0]} | samtools view -S -b > {output[0]}
 #         minimap2 -ax map-ont {params[0]} {input[0]} | samtools view -S -b > {output[0]}
 #         '''
-
 # gffread -F -w test_transcriptome.fa -g Rattus_norvegicus.mRatBN7.2.dna.toplevel.fa Rattus_norvegicus.mRatBN7.2.105.gtf
 
 rule minimap:
@@ -38,8 +37,7 @@ rule minimap:
         os.path.join('..', 'envs','align.yaml')
     shell:
         '''
-        #minimap2 -ax splice -k9 {params[0]} {input[0]} | samtools view -S -b > {output[0]}
-        minimap2 -ax map-ont {params[0]} {input[0]} | samtools view -S -b > {output[0]}
+        minimap2 -ax splice {params[0]} {input[0]} | samtools view -S -b > {output[0]}
         '''
 
 rule bam_sort:
@@ -76,7 +74,7 @@ rule bam_stats:
         os.path.join('..', 'envs','align.yaml')
     shell:
         '''
-        samtools stats -@ {threads} {input[0]} > {output[0]} 
+        samtools stats -@ {threads} {input[0]} | grep ^SN | cut -f 2- > {output[0]} 
         '''
 
 
