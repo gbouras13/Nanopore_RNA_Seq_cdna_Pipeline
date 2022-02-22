@@ -14,3 +14,4 @@ bambuAnnotations <- prepareAnnotations(gtf.file)
 test <- bambu(reads = bam_files, annotations = bambuAnnotations, genome = fa.file, ncore = snakemake@threads)
 
 saveRDS(test, file = snakemake@output[[1]])
+

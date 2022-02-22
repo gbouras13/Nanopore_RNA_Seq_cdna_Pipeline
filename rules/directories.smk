@@ -21,6 +21,7 @@ if not os.path.exists(OUTPUT):
 ### OUTPUT DIRs
 RESULTS = os.path.join(OUTPUT, 'RESULTS')
 QC = os.path.join(OUTPUT, 'QC')
+BAM_STATS = os.path.join(QC, 'BAM_STATS')
 FLAGS = os.path.join(OUTPUT, 'FLAGS')
 WORKDIR = os.path.join(OUTPUT, 'PROCESSING')
 TMP = os.path.join(WORKDIR, 'TMP')

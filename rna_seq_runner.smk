@@ -2,7 +2,7 @@
 The snakefile that runs the pipeline.
 
 # local tests
-snakemake -s rna_seq_runner.smk -c 16 --use-conda --config Reads=Fastqs Output='/Users/a1667917/Documents/Ghais/Rat_RNA_Seq/test' DBDIR='/Users/a1667917/Documents/Ghais/Rat_RNA_Seq/Rat_Transcriptome'  --conda-frontend conda
+snakemake -s rna_seq_runner.smk -c 16 --use-conda --config Reads=fastqs Output='/Users/a1667917/Documents/Ghais/Rat_RNA_Seq/test' DBDIR='/Users/a1667917/Documents/Ghais/Rat_RNA_Seq/Rat_Transcriptome'  --conda-frontend conda
 
 # HPC
 # on login node from pipeline dir
