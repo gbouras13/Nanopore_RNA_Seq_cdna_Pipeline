@@ -55,7 +55,7 @@ rule pychopper:
         os.path.join(TMP,"{sample}.fastq")
     output:
         os.path.join(TMP,"{sample}_pychop.fastq"),
-        os.path.join(TMP,"{sample}_pychop_rescued.fastq")
+        os.path.join(TMP,"{sample}_pychop_rescued.fastq"),
         os.path.join(TMP,"{sample}_pychop_unclassified.fastq"),
         os.path.join(QC,"{sample}_pychop_report.pdf"),
         os.path.join(TMP,"{sample}_pychop_below_qc.fastq")
