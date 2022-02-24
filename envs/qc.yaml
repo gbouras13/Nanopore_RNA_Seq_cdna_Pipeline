@@ -5,5 +5,7 @@ dependencies:
   - nanoplot
   - porechop
   - coreutils
+  - pigz
+  - pychopper>=2.0
 
   
