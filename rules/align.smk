@@ -37,7 +37,7 @@ rule minimap:
         os.path.join('..', 'envs','align.yaml')
     shell:
         '''
-        minimap2 -ax splice {params[0]} {input[0]} | samtools view -S -b > {output[0]}
+        minimap2 -ax splice -t {threads} {params[0]} {input[0]} | samtools view -@ {threads} -S -b > {output[0]}
         '''
 
 rule bam_sort:
